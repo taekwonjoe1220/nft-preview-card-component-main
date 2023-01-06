@@ -55,6 +55,7 @@
 :root {
     --primary-200: hsl(215, 51%, 70%);
     --primary-400: hsl(178, 100%, 50%);
+    --primary-400-overlay: hsla(178, 100%, 50%, 0.6);
 
     --neutral-100: hsl(0, 0%, 100%);
     --neutral-500: hsl(215, 32%, 27%);
@@ -106,9 +107,23 @@ body {
     justify-content: center;
     align-items: center;
 }
-.card img {
-    border-radius: 10px;
+.img-container {
+  position: relative;
 }
+.img-container img {
+    border-radius: 10px;
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+
+
+
+
 h1 {
     font-size: 1.4rem;
     margin: 1.2rem 0;
@@ -150,6 +165,39 @@ h1 {
 .name {
     color: var(--neutral-100);
 }
+
+/* Hover states */
+
+.middle {
+transition: .5s ease;
+opacity: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+-ms-transform: translate(-50%, -50%);
+width: 100%;
+height: 100%;
+background-color: var(--primary-400-overlay);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.middle img {
+  height: 50px;
+  width: auto;
+}
+
+.img-container:hover .middle{
+  opacity: 1;
+  cursor: pointer;
+}
+
+h1:hover, 
+.name:hover {
+  cursor: pointer;
+  color: var(--primary-400);
+}
 /* Attribution */
 footer {
     color: var(--neutral-100);
@@ -159,6 +207,7 @@ footer {
 .attribution { 
     font-size: 16px; 
     text-align: center; 
+    margin-top: 2rem;
 }
 
 .attribution a { 
